@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextGen Engineering Solution</title>
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+/* ---------------- GLOBAL STYLES ---------------- */
+:root {
+    --primary-color: #1421df;
+    --secondary-color: #2c3e50;
+    --accent-color: #a51606;
+    --light-color: #ecf0f1;
+    --dark-color: #1c60a4;
+    --text-color: #000000;
+    --text-light: #fff;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ---------------- BUTTON ---------------- */
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background: var(--primary-color);
+    color: var(--text-light);
+    border-radius: 5px;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+/* ---------------- NAVBAR ---------------- */
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0;
+    transition: var(--transition);
+}
+
+nav.scrolled {
+    background-color: rgba(25, 54, 84, 0.95);
+    padding: 10px 0;
+    box-shadow: 0 5px 20px rgba(46, 35, 35, 0.1);
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--text-light);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    font-weight: 600;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    width: 25px;
+    height: 3px;
+    background: #f29999;
+    margin: 5px;
+}
+
+/* ---------------- HERO SECTION ---------------- */
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    animation: fadeInDown 1s;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    animation: fadeInUp 1s;
+}
+
+/* ---------------- WAVE ---------------- */
+.wave {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-size: cover;
+    animation: wave 10s linear infinite;
+}
+
+/* ---------------- SERVICES SECTION ---------------- */
+.services {
+    background: var(--light-color);
+    padding: 80px 0;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background: #e28686;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+/* ---------------- ABOUT ---------------- */
+.about .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+/* ---------------- PROJECTS ---------------- */
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+    gap: 30px;
+}
+
+/* ---------------- CONTACT ---------------- */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+/* ---------------- FOOTER ---------------- */
+footer {
+    background: var(--secondary-color);
+    color: var(--text-light);
+    padding: 20px;
+    text-align: center;
+}
+
+.back-to-top {
+    width: 45px;
+    height: 45px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---------------- MEDIA ---------------- */
+@media(max-width:768px){
+    .hamburger { display:block; }
+    .nav-links { 
+        position: fixed;
+        right: -100%;
+        top: 0;
+        flex-direction: column;
+        width: 70%;
+        height: 100vh;
+        background: var(--secondary-color);
+        justify-content: center;
+        transition: var(--transition);
+    }
+    .nav-links.active { right: 0; }
+
+    .about .container,
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------------- ANIMATIONS ---------------- */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity:0; transform: translateY(40px); }
+    to { opacity:1; transform: translateY(0); }
+}
+
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+    <div class="container">
+        <a class="logo">Future<span>Engineering</span></a>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="hamburger">
+            <div class="line"></div><div class="line"></div><div class="line"></div>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+    <div class="container">
+        <h1>Innovative Engineering Solutions</h1>
+        <p>Transforming ideas into reality with cutting-edge technology.</p>
+        <a href="#contact" class="btn">Get Started</a>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+    <div class="container">
+        <h2>Our Services</h2>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-cogs fa-3x"></i>
+                <h3>Mechanical Design</h3>
+                <p>Precision engineering for top performance.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-bolt fa-3x"></i>
+                <h3>Energy Solutions</h3>
+                <p>Advanced sustainable energy systems.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-robot fa-3x"></i>
+                <h3>Automation</h3>
+                <p>Smart automation for industries.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+    <div class="container">
+        <div>
+            <h2>About Us</h2>
+            <p>Innovative engineering solutions with 15+ years of excellence.</p>
+            <p>We combine traditional engineering with modern technology.</p>
+            <a class="btn" href="#contact">Learn More</a>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40"
+             style="width:100%;border-radius:10px;">
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects">
+    <div class="container">
+        <h2>Our Projects</h2>
+
+        <div class="project-gallery">
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d" style="width:100%;border-radius:10px;">
+                <h3>Green Energy Plant</h3>
+            </div>
+
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1605152276897-4f618f831968" style="width:100%;border-radius:10px;">
+                <h3>Urban Infrastructure</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+    <div class="container">
+        <h2>Contact Us</h2>
+
+        <div class="contact-container">
+
+            <div>
+                <p><i class="fas fa-map-marker-alt"></i> Tech City, TC 10101</p>
+                <p><i class="fas fa-phone"></i> +1 555 123 4567</p>
+                <p><i class="fas fa-envelope"></i> info@innovativeengineering.com</p>
+            </div>
+
+            <form>
+                <input type="text" placeholder="Your Name" style="width:100%;padding:10px;margin-bottom:10px;">
+                <input type="email" placeholder="Your Email" style="width:100%;padding:10px;margin-bottom:10px;">
+                <textarea placeholder="Your Message" style="width:100%;padding:10px;height:120px;"></textarea>
+                <button class="btn" style="margin-top:10px;">Send Message</button>
+            </form>
+
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2025 Innovative Engineering Solution</p>
+</footer>
+
+<!-- ---------------- JAVASCRIPT ---------------- -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    window.addEventListener('scroll', () => {
+        document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+});
+</script>
+
+</body>
+</html>
